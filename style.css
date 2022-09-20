@@ -49,7 +49,7 @@ span{
 }
 
 .main_form_box{
-    height: 350px;
+    height: 400px;
     color: white;
     display: flex;
     flex-direction:column;
