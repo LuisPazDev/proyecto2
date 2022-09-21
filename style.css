@@ -76,3 +76,24 @@ input{
 .input_comments{
     padding: 50px 30px; 
 }
+
+li{
+    color: white;
+    list-style: none;
+}
+
+.button_edit{
+    background-color: aqua;
+    color: white;
+    border-radius: 25px;
+    padding: 3px 20px;
+    font-size: 20px;
+}
+
+.button_delete{
+    background-color: white;
+    color: aqua;
+    border-radius: 25px;
+    padding: 3px 20px;
+    font-size: 20px;
+}

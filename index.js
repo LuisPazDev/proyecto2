@@ -1,15 +1,14 @@
 let form = document.getElementById('form');
-
 let inputFieldName = document.getElementById('name');
 let inputFieldEmail = document.getElementById('email');
 let inputFieldComment = document.getElementById('comment');
-
 let submit = document.getElementById('submit');
+
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (inputFieldName.value.length < 3){alert('Invalid Name')}
-});
+});  
 
 let arrayName = []
 let arrayEmail = []
@@ -29,6 +28,8 @@ inputFieldComment.addEventListener('change', function () {
     comment = inputFieldComment.value;
 });
 
+let data = localStorage.getItem('names'); 
+
 submit.addEventListener('click', function () {
     arrayName.push(name);
     arrayEmail.push(email);
@@ -36,8 +37,37 @@ submit.addEventListener('click', function () {
     
     localStorage.setItem('names', arrayName);
     localStorage.setItem('emails', arrayEmail);
-    localStorage.setItem('comments', arrayComment);    
+    localStorage.setItem('comments', arrayComment);  
 });
+
+submit.addEventListener('click', function () {
+    let list = document.createElement('ul')
+    let listItem = document.createElement('li');
+    let buttonEdit = document.createElement('button');
+    let buttonDelete = document.createElement('button');
+
+    buttonEdit.innerText = 'Edit';
+    buttonEdit.className = 'button_edit'  
+    buttonDelete.innerText = 'Delete'
+    buttonDelete.className = 'button_delete'
+
+    listItem.appendChild(buttonEdit)
+    listItem.appendChild(buttonDelete)
+    list.appendChild(listItem)
+
+    document.body.appendChild(list)
+
+});
+
+
+
+
+
+
+
+
+
+
 
 
 

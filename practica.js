@@ -2,13 +2,14 @@ let inputField = document.getElementById('nombre')
 let boton = document.querySelector('button')
 
 let data = JSON.parse(localStorage.getItem('nombres'))
-console.log(data)
+
 
 let nombresArray = data !== [] ? data : []
 let nombre = ''
 inputField.addEventListener('change', function () {
     nombre = inputField.value
 })
+
 boton.addEventListener('click', function () {
     nombresArray.push(nombre)
     localStorage.setItem('nombres', JSON.stringify(nombresArray))
