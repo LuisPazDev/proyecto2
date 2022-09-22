@@ -15,7 +15,7 @@ boton.addEventListener('click', function () {
     localStorage.setItem('nombres', JSON.stringify(nombresArray))
 })
 
-let lista = document.createElement('ul')
+let lista = document.getElementById('')
 const crearLista = () => {
     data.map((e, i) => {
         let item = document.createElement('li')

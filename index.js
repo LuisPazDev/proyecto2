@@ -4,12 +4,6 @@ let inputFieldEmail = document.getElementById('email');
 let inputFieldComment = document.getElementById('comment');
 let submit = document.getElementById('submit');
 
-
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    if (inputFieldName.value.length < 3){alert('Invalid Name')}
-});  
-
 let arrayName = []
 let arrayEmail = []
 let arrayComment = []
@@ -28,7 +22,6 @@ inputFieldComment.addEventListener('change', function () {
     comment = inputFieldComment.value;
 });
 
-let data = localStorage.getItem('names'); 
 
 submit.addEventListener('click', function () {
     arrayName.push(name);
@@ -38,26 +31,46 @@ submit.addEventListener('click', function () {
     localStorage.setItem('names', arrayName);
     localStorage.setItem('emails', arrayEmail);
     localStorage.setItem('comments', arrayComment);  
-});
 
-submit.addEventListener('click', function () {
     let list = document.createElement('ul')
-    let listItem = document.createElement('li');
+    let listName = document.createElement('li');
+    let listEmail = document.createElement('li');
+    let listComment = document.createElement('li');
+    let listItem = document.createElement('li'); 
     let buttonEdit = document.createElement('button');
     let buttonDelete = document.createElement('button');
 
+    let dataName = localStorage.getItem('names'); 
+    let dataEmail = localStorage.getItem('emails');
+    let dataComment = localStorage.getItem('comments');
+
+
+    listName.innerText = dataName
+    listEmail.innerText = dataEmail
+    listComment.innerText = dataComment
     buttonEdit.innerText = 'Edit';
     buttonEdit.className = 'button_edit'  
     buttonDelete.innerText = 'Delete'
     buttonDelete.className = 'button_delete'
 
+
+    listItem.appendChild(listName)
+    listItem.appendChild(listEmail)
+    listItem.appendChild(listComment)
+    list.appendChild(listItem)
     listItem.appendChild(buttonEdit)
     listItem.appendChild(buttonDelete)
-    list.appendChild(listItem)
+
 
     document.body.appendChild(list)
-
 });
+
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (inputFieldName.value.length < 3){alert('Invalid Name')}
+});  
+
 
 
 
