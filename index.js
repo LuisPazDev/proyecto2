@@ -1,22 +1,16 @@
 let form = document.getElementById('form');
 let inputFieldName = document.getElementById('name');
-let inputFieldEmail = document.getElementById('email');
 let inputFieldComment = document.getElementById('comment');
 let submit = document.getElementById('submit');
 
-let arrayName = []
-let arrayEmail = []
-let arrayComment = []
+let arrayName = [];
+let arrayComment = [];
 
-let name = ''
-let email = ''
-let comment = ''
+let name = '';
+let comment = '';
 
 inputFieldName.addEventListener('change', function () {
     name = inputFieldName.value;
-})
-inputFieldEmail.addEventListener('change', function () {
-    email = inputFieldEmail.value;
 });
 inputFieldComment.addEventListener('change', function () {
     comment = inputFieldComment.value;
@@ -25,44 +19,36 @@ inputFieldComment.addEventListener('change', function () {
 
 submit.addEventListener('click', function () {
     arrayName.push(name);
-    arrayEmail.push(email);
     arrayComment.push(comment);
     
     localStorage.setItem('names', arrayName);
-    localStorage.setItem('emails', arrayEmail);
     localStorage.setItem('comments', arrayComment);  
 
-    let list = document.createElement('ul')
-    let listName = document.createElement('li');
-    let listEmail = document.createElement('li');
-    let listComment = document.createElement('li');
-    let listItem = document.createElement('li'); 
+    let list = document.createElement('div');
+    let listName = document.createElement('p');
+    let listComment = document.createElement('p');
     let buttonEdit = document.createElement('button');
     let buttonDelete = document.createElement('button');
 
     let dataName = localStorage.getItem('names'); 
-    let dataEmail = localStorage.getItem('emails');
     let dataComment = localStorage.getItem('comments');
 
-
-    listName.innerText = dataName
-    listEmail.innerText = dataEmail
-    listComment.innerText = dataComment
+    list.className = 'list';
+    listName.innerText = dataName ;
+    listComment.innerText = dataComment ;
     buttonEdit.innerText = 'Edit';
-    buttonEdit.className = 'button_edit'  
-    buttonDelete.innerText = 'Delete'
-    buttonDelete.className = 'button_delete'
+    buttonEdit.className = 'button_edit' ; 
+    buttonDelete.innerText = 'Delete';
+    buttonDelete.className = 'button_delete';
 
 
-    listItem.appendChild(listName)
-    listItem.appendChild(listEmail)
-    listItem.appendChild(listComment)
-    list.appendChild(listItem)
-    listItem.appendChild(buttonEdit)
-    listItem.appendChild(buttonDelete)
+    list.appendChild(listName);
+    list.appendChild(listComment)
+    list.appendChild(buttonEdit);
+    list.appendChild(buttonDelete);
 
 
-    document.body.appendChild(list)
+    document.body.appendChild(list);
 });
 
 
