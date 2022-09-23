@@ -1,41 +1,61 @@
 let form = document.getElementById('form');
 let inputFieldName = document.getElementById('name');
-let inputFieldComment = document.getElementById('comment');
+let inputFieldPhone = document.getElementById('phone');
+let inputFieldSelector = document.getElementById('select');
 let submit = document.getElementById('submit');
 
 let arrayName = [];
-let arrayComment = [];
+let arrayPhone = [];
+let arraySelector = [];
 
 let name = '';
-let comment = '';
+let phone = '';
+let selector = '';
 
 inputFieldName.addEventListener('change', function () {
     name = inputFieldName.value;
 });
-inputFieldComment.addEventListener('change', function () {
-    comment = inputFieldComment.value;
+inputFieldPhone.addEventListener('change', function () {
+    phone = inputFieldPhone.value;
 });
+inputFieldSelector.addEventListener('change', function () {
+    selector = inputFieldSelector.value;
+});
+
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (inputFieldName.value < 3)
+    {alert('Invalid Name')}
+    form.reset();
+}); 
 
 
 submit.addEventListener('click', function () {
     arrayName.push(name);
-    arrayComment.push(comment);
+    arrayPhone.push(phone);
+    arraySelector.push(selector);
     
-    localStorage.setItem('names', arrayName);
-    localStorage.setItem('comments', arrayComment);  
+    
+    localStorage.setItem('name', arrayName);
+    localStorage.setItem('phone', arrayPhone);
+    localStorage.setItem('selection', arraySelector);  
 
     let list = document.createElement('div');
     let listName = document.createElement('p');
-    let listComment = document.createElement('p');
+    let ListPhone = document.createElement('p');
+    let listSelector = document.createElement('p');
     let buttonEdit = document.createElement('button');
     let buttonDelete = document.createElement('button');
 
-    let dataName = localStorage.getItem('names'); 
-    let dataComment = localStorage.getItem('comments');
+    let dataName = localStorage.getItem('name');
+    let dataPhone = localStorage.getItem('phone'); 
+    let dataSelector = localStorage.getItem('selection');
 
     list.className = 'list';
-    listName.innerText = dataName ;
-    listComment.innerText = dataComment ;
+    listName.innerHTML = dataName ;
+    ListPhone.innerHTML = dataPhone;
+    listSelector.innerHTML = dataSelector ;
     buttonEdit.innerText = 'Edit';
     buttonEdit.className = 'button_edit' ; 
     buttonDelete.innerText = 'Delete';
@@ -43,7 +63,8 @@ submit.addEventListener('click', function () {
 
 
     list.appendChild(listName);
-    list.appendChild(listComment)
+    list.appendChild(ListPhone);
+    list.appendChild(listSelector);
     list.appendChild(buttonEdit);
     list.appendChild(buttonDelete);
 
@@ -51,11 +72,6 @@ submit.addEventListener('click', function () {
     document.body.appendChild(list);
 });
 
-
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    if (inputFieldName.value.length < 3){alert('Invalid Name')}
-});  
 
 
 

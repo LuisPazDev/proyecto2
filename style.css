@@ -45,6 +45,15 @@ input{
     background-color: white;
     color: black;
     width: 100%;
+    margin: 30px auto;
+    padding: 10px 100px;
+    border: 2px solid aqua
+}
+
+select{
+    background-color: white;
+    color: black;
+    width: 100%;
     margin: 25px auto;
     padding: 10px 100px;
     border: 2px solid aqua
@@ -58,11 +67,6 @@ input{
     border-radius: 25px;
     padding: 5px 30px;
 }
-
-.input_comments{
-    padding: 40px 30px; 
-}
-
 
 .list{
     flex-direction: column;
@@ -80,21 +84,23 @@ p{
 }
 
 .button_edit{
-    min-width: 120px;
+    min-width: 70px;
     background-color: white;
     color: #000;
+    border: none;
     margin: 25px;
-    padding: 10px;
+    padding: 3px;
     border-radius: 25px;
     font-size: large;
     font-weight: 600;
 }
 
 .button_delete{
-    min-width: 120px;
+    min-width: 70px;
     background-color: aqua;
     color: black;
-    padding: 10px;
+    border: none;
+    padding: 3px;
     border-radius: 25px;
     font-size: large;
     font-weight: 600;
