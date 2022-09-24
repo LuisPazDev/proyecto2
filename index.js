@@ -36,10 +36,9 @@ submit.addEventListener('click', function () {
     arrayPhone.push(phone);
     arraySelector.push(selector);
     
-    
-    localStorage.setItem('name', arrayName);
-    localStorage.setItem('phone', arrayPhone);
-    localStorage.setItem('selection', arraySelector);  
+    localStorage.setItem('name', JSON.stringify(arrayName));
+    localStorage.setItem('phone', JSON.stringify (arrayPhone));
+    localStorage.setItem('selection', JSON.stringify (arraySelector));  
 
     let list = document.createElement('div');
     let listName = document.createElement('p');
@@ -48,9 +47,19 @@ submit.addEventListener('click', function () {
     let buttonEdit = document.createElement('button');
     let buttonDelete = document.createElement('button');
 
-    let dataName = localStorage.getItem('name');
-    let dataPhone = localStorage.getItem('phone'); 
-    let dataSelector = localStorage.getItem('selection');
+    let dataName = JSON.parse(localStorage.getItem('name'));
+    let dataPhone = JSON.parse(localStorage.getItem('phone')); 
+    let dataSelector = JSON.parse(localStorage.getItem('selection'));
+
+    buttonDelete.addEventListener('click', function() {
+        arrayName.splice(0, 1);
+        localStorage.setItem('name', JSON.stringify(arrayName));
+        arrayPhone.splice(0, 1);
+        localStorage.setItem('phone', JSON.stringify(arrayPhone));
+        arraySelector.splice(0, 1);
+        localStorage.setItem('selection', JSON.stringify(arraySelector))
+        list.remove();
+    });
 
     list.className = 'list';
     listName.innerHTML = dataName ;
@@ -68,9 +77,12 @@ submit.addEventListener('click', function () {
     list.appendChild(buttonEdit);
     list.appendChild(buttonDelete);
 
-
     document.body.appendChild(list);
 });
+
+
+
+
 
 
 
