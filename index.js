@@ -23,10 +23,14 @@ inputFieldSelector.addEventListener('change', function () {
     selector = inputFieldSelector.value;
 });
 
+
+
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (inputFieldName.value < 3)
     {alert('Invalid Name')};
+    if (inputFieldPhone.value < 3)
+    {alert('Invalid Phone Number')};
     form.reset();
 }); 
 
@@ -51,6 +55,7 @@ submit.addEventListener('click', function () {
     let dataSelector = JSON.parse(localStorage.getItem('selection'));
 
     buttonEdit.addEventListener('click', function () {
+
         inputFieldName.style.border = '2px solid orange';
         inputFieldName.style.fontSize = '25px'
         inputFieldName.value = arrayName;
@@ -94,8 +99,9 @@ submit.addEventListener('click', function () {
     list.appendChild(buttonDelete);
 
     document.body.appendChild(list);
-
 });
+
+
 
 
 
