@@ -84,7 +84,7 @@ p{
     background-color: white;
     color: #000;
     margin: 5px;
-    border: black;
+    border: 1px solid orange;
     text-align: center;
     font-size: 18px;
     font-weight: 600;
@@ -92,7 +92,7 @@ p{
 
 .button_edit{
     min-width: 70px;
-    background-color: aqua;
+    background-color: orange;
     color: #000;
     border: none;
     margin: 25px;
@@ -104,9 +104,9 @@ p{
 
 .button_delete{
     min-width: 70px;
-    background-color: white;
+    background-color: aqua;
     color: black;
-    border: none;
+    border:none;
     padding: 3px;
     border-radius: 25px;
     font-size: large;

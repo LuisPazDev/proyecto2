@@ -2,6 +2,7 @@ let form = document.getElementById('form');
 let inputFieldName = document.getElementById('name');
 let inputFieldPhone = document.getElementById('phone');
 let inputFieldSelector = document.getElementById('select');
+let container = document.getElementById('container');
 let submit = document.getElementById('submit');
 
 let arrayName = [];
@@ -22,14 +23,12 @@ inputFieldSelector.addEventListener('change', function () {
     selector = inputFieldSelector.value;
 });
 
-
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (inputFieldName.value < 3)
-    {alert('Invalid Name')}
+    {alert('Invalid Name')};
     form.reset();
 }); 
-
 
 submit.addEventListener('click', function () {
     arrayName.push(name);
@@ -51,6 +50,22 @@ submit.addEventListener('click', function () {
     let dataPhone = JSON.parse(localStorage.getItem('phone')); 
     let dataSelector = JSON.parse(localStorage.getItem('selection'));
 
+    buttonEdit.addEventListener('click', function () {
+        inputFieldName.style.border = '2px solid orange';
+        inputFieldName.style.fontSize = '25px'
+        inputFieldName.value = arrayName;
+        inputFieldPhone.style.border = '2px solid orange';
+        inputFieldPhone.style.fontSize = '25px'
+        inputFieldPhone.value = arrayPhone;
+        inputFieldSelector.style.border = '2px solid orange';
+        inputFieldSelector.style.fontSize = '25px'
+        inputFieldSelector.value = arraySelector;
+        submit.value = 'Edit';
+        submit.style.backgroundColor = 'orange';
+        submit.style.border = '2px solid orange';
+        list.remove();
+    });
+
     buttonDelete.addEventListener('click', function() {
         arrayName.splice(0, 1);
         localStorage.setItem('name', JSON.stringify(arrayName));
@@ -59,6 +74,7 @@ submit.addEventListener('click', function () {
         arraySelector.splice(0, 1);
         localStorage.setItem('selection', JSON.stringify(arraySelector))
         list.remove();
+        window.location.reload();
     });
 
     list.className = 'list';
@@ -78,6 +94,7 @@ submit.addEventListener('click', function () {
     list.appendChild(buttonDelete);
 
     document.body.appendChild(list);
+
 });
 
 
